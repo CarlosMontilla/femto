@@ -1,4 +1,4 @@
-module github.com/pgavlin/femto
+module github.com/CarlosMontilla/femto
 
 go 1.12
 
