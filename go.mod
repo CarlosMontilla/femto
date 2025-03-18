@@ -3,7 +3,6 @@ module github.com/CarlosMontilla/femto
 go 1.24.1
 
 require (
-	github.com/CarlosMontilla/femto v0.0.0-20250318082704-4500c64f21b8
 	github.com/atotto/clipboard v0.1.4
 	github.com/gdamore/tcell/v2 v2.8.1
 	github.com/mattn/go-runewidth v0.0.16
