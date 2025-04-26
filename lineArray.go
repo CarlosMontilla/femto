@@ -3,6 +3,7 @@ package femto
 import (
 	"bufio"
 	"io"
+	"strings"
 	"unicode/utf8"
 
 	"github.com/zyedidia/micro/cmd/micro/highlight"
@@ -61,6 +62,10 @@ func Append(slice []Line, data ...Line) []Line {
 		slice[l+i] = c
 	}
 	return slice
+}
+
+func NewLineArrayFromString(str string) *LineArray {
+	return NewLineArray(int64(len(str)), strings.NewReader(str))
 }
 
 // NewLineArray returns a new line array from an array of bytes

@@ -64,6 +64,10 @@ type View struct {
 
 	// The runtime files
 	runtimeFiles *RuntimeFiles
+
+	HideCursor bool
+
+	ModifyCallback func(*View, *Buffer)
 }
 
 // NewView returns a new view with the specified buffer.
@@ -83,6 +87,10 @@ func NewView(buf *Buffer) *View {
 	}
 
 	v.bindings = DefaultKeyBindings
+
+	v.HideCursor = false
+
+	v.ModifyCallback = func(v *View, b *Buffer) {}
 
 	return v
 }
@@ -355,6 +363,8 @@ func (v *View) HandleEvent(event tcell.Event) {
 		// This is (hopefully) a temporary solution
 		v.Relocate()
 	}
+
+	v.ModifyCallback(v, v.Buf)
 }
 
 func (v *View) mainCursor() bool {
@@ -593,7 +603,7 @@ func (v *View) Draw(screen tcell.Screen) {
 	v.displayView(screen)
 
 	// Don't draw the cursor if it is out of the viewport or if it has a selection
-	if v.Cursor.Y-v.Topline < 0 || v.Cursor.Y-v.Topline > v.height-1 || v.Cursor.HasSelection() {
+	if v.Cursor.Y-v.Topline < 0 || v.Cursor.Y-v.Topline > v.height-1 || v.Cursor.HasSelection() || v.HideCursor {
 		screen.HideCursor()
 	}
 

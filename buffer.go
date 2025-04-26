@@ -191,6 +191,17 @@ func (b *Buffer) update() {
 	b.NumLines = len(b.lines)
 }
 
+// Update fetches the string from the rope and updates the `text` and `lines` in the buffer
+func (b *Buffer) Update() {
+	b.update()
+}
+
+func (b *Buffer) ReplaceContent(newcontent string) {
+	b.LineArray = NewLineArrayFromString(newcontent)
+	b.IsModified = true
+	b.update()
+}
+
 // MergeCursors merges any cursors that are at the same position
 // into one cursor
 func (b *Buffer) MergeCursors() {
