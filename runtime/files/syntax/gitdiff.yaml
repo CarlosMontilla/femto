@@ -1,0 +1,20 @@
+filetype: gitdiff
+
+detect:
+    filename: "\\.(diff|patch)$"
+
+rules:
+    - type.keyword: "^diff --git.*"
+    - type.keyword: "^index .*"
+    - preproc: "^--- .*"
+    - preproc: "^\\+\\+\\+ .*"
+    - special: "^@@ .* @@"
+    - addition: "^\\+.*"
+    - deletion: "^-.*"
+    - comment: "^#.*"
+    - symbol: "^\\*{3} .*|^-{3} .*|^\\+{3} .*"
+    - constant.number: "^@@ -\\d+(,\\d+)? \\+\\d+(,\\d+)? @@"
+
+    # Optional trailing whitespace warning
+    - indent-char.whitespace: "[[:space:]]+$"
+
