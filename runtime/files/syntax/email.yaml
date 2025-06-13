@@ -1,0 +1,9 @@
+filetype: email
+
+detect:
+  filename: "\\.(eml|email|)$"
+
+rules:
+  - symbol: "^(Subject|From|To|CC|Date):\\s*.*$"
+  - preproc: "^(Subject|From|To|CC|Date):"
+

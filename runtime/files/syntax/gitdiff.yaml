@@ -9,12 +9,12 @@ rules:
     - preproc: "^--- .*"
     - preproc: "^\\+\\+\\+ .*"
     - special: "^@@ .* @@"
-    - addition: "^\\+.*"
-    - deletion: "^-.*"
+    - diff-added: "^\\+.*"
+    - diff-deleted: "^-.*"
     - comment: "^#.*"
     - symbol: "^\\*{3} .*|^-{3} .*|^\\+{3} .*"
     - constant.number: "^@@ -\\d+(,\\d+)? \\+\\d+(,\\d+)? @@"
 
     # Optional trailing whitespace warning
-    - indent-char.whitespace: "[[:space:]]+$"
+    - indent-char: "[[:space:]]+$"
 
