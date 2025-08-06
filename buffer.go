@@ -320,7 +320,7 @@ func (b *Buffer) LineRunes(n int) []rune {
 
 // Line returns a single line
 func (b *Buffer) Line(n int) string {
-	if n >= len(b.lines) {
+	if n >= len(b.lines) || n < 0 {
 		return ""
 	}
 	return string(b.lines[n].data)
